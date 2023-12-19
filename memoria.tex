@@ -34,9 +34,9 @@ hmargin=3cm
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
 
-% Soporte para GENERAR PDF/A --es importante de cara a su inclusión en e-Archivo porque es el formato óptimo de preservación y a la generación de metadatos, tal y como se describe en http://uc3m.libguides.com/ld.php?content_id=31389625. 
+% Soporte para GENERAR PDF/A --es importante de cara a su inclusión en e-Archivo porque es el formato óptimo de preservación y a la generación de metadatos, tal y como se describe en http://uc3m.libguides.com/ld.php?content_id=31389625.
 
-% En la plantilla incluimos el archivo OUTPUT.XMPDATA. Puedes descargar este archivo e incluir los metadatos que se incorporarán al archivo PDF cuando compiles el archivo memoria.tex. Después vuelve a subirlo a tu proyecto. 
+% En la plantilla incluimos el archivo OUTPUT.XMPDATA. Puedes descargar este archivo e incluir los metadatos que se incorporarán al archivo PDF cuando compiles el archivo memoria.tex. Después vuelve a subirlo a tu proyecto.
 \usepackage[a-1b]{pdfx}
 
 % ENLACES
@@ -49,12 +49,12 @@ hmargin=3cm
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 
 % Codificación caracteres
-\usepackage{txfonts} 
+\usepackage{txfonts}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
 % Definición idioma español
-\usepackage[spanish, es-tabla]{babel} 
+\usepackage[spanish, es-tabla]{babel}
 \usepackage[babel, spanish=spanish]{csquotes}
 \AtBeginEnvironment{quote}{\small}
 
@@ -77,11 +77,11 @@ hmargin=3cm
 {}
 \titlespacing{\chapter}{0pt}{0pt}{*3}
 \titlecontents{chapter}
-[0pt]                                               
+[0pt]
 {}
 {\contentsmargin{0pt}\thecontentslabel.\enspace\uppercase}
-{\contentsmargin{0pt}\uppercase}                        
-{\titlerule*[.7pc]{.}\contentspage}                 
+{\contentsmargin{0pt}\uppercase}
+{\titlerule*[.7pc]{.}\contentspage}
 
 \titleformat{\section}
 {\bfseries}
@@ -89,7 +89,7 @@ hmargin=3cm
 {5pt}
 {}
 \titlecontents{section}
-[5pt]                                               
+[5pt]
 {}
 {\contentsmargin{0pt}\thecontentslabel.\enspace}
 {\contentsmargin{0pt}}
@@ -101,16 +101,16 @@ hmargin=3cm
 {5pt}
 {}
 \titlecontents{subsection}
-[10pt]                                               
+[10pt]
 {}
-{\contentsmargin{0pt}                          
+{\contentsmargin{0pt}
 	\thecontentslabel.\enspace}
-{\contentsmargin{0pt}}                        
-{\titlerule*[.7pc]{.}\contentspage}  
+{\contentsmargin{0pt}}
+{\titlerule*[.7pc]{.}\contentspage}
 
 
 % DISEÑO DE TABLAS
-\usepackage{multirow} % permite combinar celdas 
+\usepackage{multirow} % permite combinar celdas
 \usepackage{caption} % para personalizar el título de tablas y figuras
 \usepackage{floatrow} % utilizamos este paquete y sus macros \ttabbox y \ffigbox para alinear los nombres de tablas y figuras de acuerdo con el estilo definido.
 \usepackage{array} % con este paquete podemos definir en la siguiente línea un nuevo tipo de columna para tablas: ancho personalizado y contenido centrado
@@ -128,7 +128,7 @@ hmargin=3cm
 	font=small
 }
 
-% DISEÑO DE FIGURAS. 
+% DISEÑO DE FIGURAS.
 \usepackage{graphicx}
 \graphicspath{{imagenes/}} % ruta a la carpeta de imágenes
 
@@ -139,7 +139,7 @@ hmargin=3cm
 	singlelinecheck=off,
 	labelsep=period,
 	labelfont=small,
-	font=small		
+	font=small
 }
 
 % NOTAS A PIE DE PÁGINA
@@ -166,7 +166,7 @@ hmargin=3cm
 	keywordstyle=\bfseries,
 	stringstyle=\ttfamily,
 	showstringspaces = false,
-	commentstyle=\color{gray45},     
+	commentstyle=\color{gray45},
 	%
 	numbers=left,
 	numbersep=15pt,
@@ -177,7 +177,7 @@ hmargin=3cm
 }
 
 \captionsetup*[lstlisting]{font=small, labelsep=period}
-% fijamos el estilo a utilizar 
+% fijamos el estilo a utilizar
 \lstset{style=estilo}
 \renewcommand{\lstlistingname}{\uppercase{Código}}
 
@@ -192,7 +192,7 @@ hmargin=3cm
 \definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
 \definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
-\definecolor{orange}{rgb}{1,0.45,0.13}		
+\definecolor{orange}{rgb}{1,0.45,0.13}
 \definecolor{olive}{rgb}{0.17,0.59,0.20}
 \definecolor{brown}{rgb}{0.69,0.31,0.31}
 \definecolor{purple}{rgb}{0.38,0.18,0.81}
