@@ -253,21 +253,20 @@ hmargin=3cm
 
 \item Empresa:
   \begin{itemize}
-  \item \emph{TODO}
+  \item Universidad Carlos III de Madrid
+  \item Departamento de Informática. Grupo ARCOS.
   \end{itemize}
 
 \item Periodo de realización:
   \begin{itemize}
-  \item Días: \emph{TODO}
-  \item Horas: \emph{TODO}
-  \item Número de créditos: \emph{TODO}
+  \item Horas: 150 horas
+  \item Número de créditos: 6 créditos
   \end{itemize}
 
 \item Tutor asignado:
   \begin{itemize}
   \item José Daniel García Sánchez.
   \item Dirección de correo: \url{jdgarcia@inf.uc3m.es}
-  \item Tel.: \emph{TODO}
   \end{itemize}
 \end{itemize}
 
@@ -275,7 +274,17 @@ hmargin=3cm
 
 Yo elegí y tuve la oportunidad de hacer las prácticas con el grupo de
 investigación ARCOS. Durante mí estadía, me tocó participar en una
-colaboración entre la universidad y EMPRESAA.
+colaboración entre la universidad y una empresa grande en el sector de
+servicios financieros.
+
+
+\paragraph{}
+Al haber firmado un NDA (non-disclosure agreement), y porque no he
+pedido permiso a la empresa para usar su nombre en esta memoria, voy a
+continuar refiriéndome a la empresa como \emph{Empresa X} a lo largo
+de este reporte\footnote{No hablo de ningún tema que comprometa a la
+empresa ni al proyecto de la colaboración, pero ante la duda, mejor
+evito el posible problema.}.
 
 \paragraph{}
 Esta fue mí primera experiencia siendo miembro de grupo de
@@ -328,10 +337,10 @@ La lista de objetivos generales que considero haber cumplido son:
   mucha expriencia previa trabajando en bases de código con millones
   de líneas de código. Es una experiencia muy distinta saber ubicarse
   dentro de tales proyectos. Como la herramienta seleccionada no
-  implementabla algunas de las reglas acordadas con EMPRESAA, tuve que
+  implementabla algunas de las reglas acordadas con Empresa X, tuve que
   implementarlas yo mismo.
 \item \textbf{Comunicar resultados al cliente}: A lo largo del
-  proyecto, hubieron varias reuniones con personal de EMPRESAA para
+  proyecto, hubieron varias reuniones con personal de Empresa X para
   ponerse al día, elaborar una solución juntos, y comunicar los
   resultados finales. Aprendí como ser conciso para poder ser
   entendido por los miembros del equipo con menos conocimiento
@@ -361,7 +370,7 @@ cronológico son:
 \item Estudio de reglas incluidas en clang-tidy.
 \item Implantación en pipelines de Integración Contínua.
 \item Desarrollo de reglas adicionales en clang-tidy.
-\item Cierre de la colaboración con EMPRESAA.
+\item Cierre de la colaboración con Empresa X.
 \item Contribución a proyecto open-source LLVM.
 \end{enumerate}
 
@@ -370,7 +379,7 @@ cronológico son:
 
 Para esta fase fue crucial la interacción con el cliente. A lo largo
 de una serie de reuniones acordamos un conjunto de reglas de
-codificación realista para EMPRESAA (reglas que tengan en cuenta la
+codificación realista para Empresa X (reglas que tengan en cuenta la
 situación de la empresa, el proyecto, y toda la gente involucrada en
 él).
 
@@ -384,7 +393,7 @@ saber comunicar esos conocimientos al cliente}.
 Los objetivos de esta fase son:
 \begin{itemize}
 \item \textbf{Participar en reuniones virtuales con el cliente}
-  (EMPRESAA): Esto fue algo completamente nuevo para mí que nunca me
+  (Empresa X): Esto fue algo completamente nuevo para mí que nunca me
   había visto en la posición de tener que explicar y trabajar junto a
   un cliente para llegar a un resultado satisfactorio para ambos.
 
@@ -423,7 +432,7 @@ ampliar sobre el estudio inicial.
 
 \paragraph{}
 Tuve la responsabilidad llevar a cabo un un análisis donde se
-constataron cuáles de las reglas acordadas con EMPRESAA pueden ser
+constataron cuáles de las reglas acordadas con Empresa X pueden ser
 verificadas automáticamente, cuáles pueden ser verificadas por Clang
 Tidy, cuáles deberían ser codificadas por nostoros, y cuáles no pueden
 ser codificadas porque dependen de algún factor humano (por ejemplo,
@@ -472,19 +481,19 @@ Analyzer en el pipeline \emph{Integración Contínua (CI)} y en el
 \emph{Workflow} del programador.
 
 \paragraph{}
-Iniciando por el workflow, en EMPRESAA usa como IDE (Entorno de
+Iniciando por el workflow, en Empresa X usa como IDE (Entorno de
 Desarrollo Integrado) principal \emph{Microsoft Visual Studio}. Se
 enfrentaron varios problemas para integrar Clang Tidy en este IDE.
 Los problemas se deben principalmente a la poca documentación del IDE,
 a la naturaleza propietaria que ofusca el proceso de configuración, y
-por la estructura orgánica del proyecto de EMPRESAA, que dificulta la
+por la estructura orgánica del proyecto de Empresa X, que dificulta la
 automatización de algunos procesos sobre el proyecto.
 
 \paragraph{}
 Haciendo uso del controlador de versiones \emph{Git}, se optó por
 escribir un script que ejecute Clang Tidy sobre los cambios efectuados
 por el programador cada vez que el programador intente hacer un
-\emph{commit}. Algunos desarrolladores en EMPRESAA optan por usar
+\emph{commit}. Algunos desarrolladores en Empresa X optan por usar
 Linux, por lo tanto este script debía funcionar tanto en Linux como en Windows.
 
 \paragraph{}
@@ -506,7 +515,7 @@ Los objetivos de esta fase entonces son:
 \item \textbf{Desarrollar scripts pre-commit para Git en Linux y
   Windows}: Script que ejecuta Clang Tidy antes de cada commit a
   manera de corroborar que cada pieza de código nuevo está adecuado al
-  conjunto de reglas acordados con EMPRESAA.
+  conjunto de reglas acordados con Empresa X.
 \item \textbf{Integrar Clang Tidy y Clang Static Analyzer en el
   pipeline de CI haciendo uso de CodeChecker}: Configuración de
   CodeChecker para integrar en Jenkins.  CodeChecker es una
@@ -555,17 +564,17 @@ Objetivos de esta fase:
     código ``aceptable'' y ``uniforme'' con el resto de la base de
     código.
   \end{itemize}
-\item \textbf{Facilitar a EMPRESAA los parches realizados sobre Clang
-  Tidy}: Con EMPRESAA acordamos la versión de Clang Tidy a usar desde
+\item \textbf{Facilitar a Empresa X los parches realizados sobre Clang
+  Tidy}: Con Empresa X acordamos la versión de Clang Tidy a usar desde
   un principio, por lo que o solo tuve que realizar un script que
   aplicara de manera automática los parches realizados sobre el código
   de Clang Tidy de esa versión en particular.
 \end{itemize}
 
-\section{Cierre de la colaboración con EMPRESAA}
+\section{Cierre de la colaboración con Empresa X}
 
 En esta fase se comunicaron los resultados de toda la colaboración a
-una porción más grande del equipo de EMPRESAA. Me ví en la posición de
+una porción más grande del equipo de Empresa X. Me ví en la posición de
 explicar todas las decisiones tomadas y acciones realizadas de una
 manera concisa y clara.
 
@@ -573,22 +582,22 @@ manera concisa y clara.
 Objetivos de esta fase:
 \begin{itemize}
 \item \textbf{Resumir todas las decisiones y acciones realizadas a lo
-  largo de la colaboración al equipo de EMPRESAA}: Hacer un repaso de
+  largo de la colaboración al equipo de Empresa X}: Hacer un repaso de
   todas las fases anteriores, desde la selección de herramienta hasta
   el desarrollo del código para las reglas faltantes en Clang Tidy.
-\item \textbf{Trabajar en conjunto con empleados de EMPRESAA}: Para
+\item \textbf{Trabajar en conjunto con empleados de Empresa X}: Para
   desarrollar una explicación clara y concisa para el resto de sus
   compañeros de trabajo.
 \item \textbf{Preparar una presentación a modo de resumir todo lo
   realizado en la colaboración}: En donde tuve que explicar y resolver
-  dudas del equipo de EMPRESAA previo al cierre de la colaboración.
+  dudas del equipo de Empresa X previo al cierre de la colaboración.
 \end{itemize}
 
 \section{Contribución a proyecto open-source LLVM}
 
-Una vez terminada la colaboración con EMPRESAA, mí tutor fue capaz de
+Una vez terminada la colaboración con Empresa X, mí tutor fue capaz de
 conseguir permiso para poder contribuir las reglas escritas para
-EMPRESAA a la base de código de Clang Tidy. Esto beneficia a ambos
+Empresa X a la base de código de Clang Tidy. Esto beneficia a ambos
 bandos; ellos consiguen tener mantenimiento por la comunidad código
 abierto de LLVM, y nosotros conseguimos mayor exposición.
 
@@ -655,7 +664,7 @@ base de código de Clang Tidy.
 \paragraph{}
 \textbf{Estadística}
 
-Muchos de los datos que tuve que comunicar al equipo de EMPRESAA se
+Muchos de los datos que tuve que comunicar al equipo de Empresa X se
 dieron en forma de estadísticos, distribuciones, etcétera. Sin previo
 conocimiento del área de estadística, no podría haber comunicado a los
 miembros del equipo los resultados obtenidos al evaluar distintas
@@ -715,7 +724,7 @@ aprendido bastante sobre software y la gente que lo produce.
 
 \section{Experiencia en ARCOS}
 
-Mí tutor José Daniel junto a todo el grupo de ARCOS me brindaron un
+Mí tutor, José Daniel, junto a todo el grupo de ARCOS me brindaron un
 entorno laboral más que satisfactorio. Fui capaz de ser parte de un
 entorno agradable de trabajo, con gente competente que trata con temas
 técnicamente interesantes y desafiantes.
@@ -730,7 +739,7 @@ estas prácticas me ayudaron a formarme como un aspirante a ingeniero
 más completo del que era previo a su realización.
 
 \paragraph{}
-La colaboración con EMPRESAA me enseñó bastante sobre la forma de
+La colaboración con Empresa X me enseñó bastante sobre la forma de
 operar de la industria IT, sus intereses y prioridades. Así como mí
 estadía en ARCOS me mostró la forma de operar de un grupo de
 investigación en el área de la ingeniería informática.
