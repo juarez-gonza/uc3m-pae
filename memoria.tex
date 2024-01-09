@@ -14,7 +14,7 @@
 %	CONFIGURACIÓN DEL DOCUMENTO
 %----------
 
-\documentclass[12pt]{report} % fuente a 12pt
+\documentclass[12pt]{extreport} % fuente a 12pt
 
 % MÁRGENES: 2,5 cm sup. e inf.; 3 cm izdo. y dcho.
 \usepackage[
@@ -95,7 +95,7 @@ hmargin=3cm
 {\contentsmargin{0pt}}
 {\titlerule*[.7pc]{.}\contentspage}
 
-\titleformat{\subsection}
+\titleformat{\section}
 {\normalsize\bfseries}
 {\thesubsection.}
 {5pt}
@@ -202,6 +202,7 @@ hmargin=3cm
 
 \title{Prácticas Externas Curriculares}
 
+
 \author{Gonzalo Matías Juarez Tello}
 \date{}
 
@@ -233,6 +234,13 @@ hmargin=3cm
 	\end{sffamily}
 \end{titlepage}
 
+\setcounter{page}{2}
+\tableofcontents
+\thispagestyle{fancy}
+ % página en blanco o de cortesía
+\thispagestyle{empty}
+\mbox{}
+
 \section*{Datos de las prácticas}
 
 \begin{itemize}
@@ -263,14 +271,478 @@ hmargin=3cm
   \end{itemize}
 \end{itemize}
 
-\section{Introducción}
+\chapter{Introducción}
 
-\section{Objetivos generales conseguidos por el estudiante}
+Yo elegí y tuve la oportunidad de hacer las prácticas con el grupo de
+investigación ARCOS. Durante mí estadía, me tocó participar en una
+colaboración entre la universidad y EMPRESAA.
 
-\section{Fases de trabajo y objetivos conseguidos en c/u de ellas}
+\paragraph{}
+Esta fue mí primera experiencia siendo miembro de grupo de
+investigación y participando de una colaboración entre la industria
+y la universidad.
 
-\section{Consideraciones en beneficio de la realización de PAE}
+\paragraph{}
+En este reporte expongo las tareas y los objetivos de los que fui
+responsable y pude cumplir. Comenzando por cuestiones más generales,
+como la habilidad para trabajar en equipo y llevar a cabo tareas
+técnicas. Seguido por un análisis un poco más profundo de cada fase
+del proyecto de la que formé parte.
 
-\section{Conclusiones}
+\paragraph{}
+El área en el que se desenvuelve mi participación, es en la de
+\emph{Herramientas de Desarrolladores} y \emph{Calidad de Código}. El
+primero consiste en una serie de programas que facilitan la
+interacción de los programadores con su base de código, dan
+información en el momento sobre errores o posibles problemas que hayan
+en el código mostrado en pantalla y en la base de código en su
+totalidad. En cuanto al segundo item, Calidad de Código, es un
+elemento muy relacionado al tema de Herramientas de Desarrolladores,
+ya que hace uso de estas para verificar automáticamente un conjunto de
+reglas establecido. Estas reglas lo que buscan es acentuar propiedades
+deseables en el código, que lo vuelven \emph{seguro, fácil de leer, y
+mantenible}.
+
+
+\chapter{Objetivos generales conseguidos por el estudiante}
+
+Mis responsabilidades variaron entre desafíos técnicos y
+comunicacionales. Mí experiencia previa trabajando con equipos era
+bastante reducida, por lo que tuve que aprender bastante rápido a
+mejorar la comunicación para lograr los mejores resultados posibles.
+
+\paragraph{}
+La lista de objetivos generales que considero haber cumplido son:
+\begin{itemize}
+\item \textbf{Mejorar mi capacidad para trabajar en equipo y entre
+  equipos}: Como ya mencioné, fue crucial la comunicación en el
+  cumplimiento de los objetivos principales de la colaboración.
+\item \textbf{Hacer un análisis en profundidad de distintas soluciones
+  al problema en cuestión}: Tuve que ayudar en la selección entre un
+  número considerable de posibles Herramientas de Desarrolladores de
+  las llamadas \emph{linters} (ej.: Clang Tidy, SonarLint,
+  cppcheck). Para lo cual fue necesario hacer un análisis sobre
+  tiempos de ejecución, facilidad de adopción al IDE, porcentaje de
+  reglas de codificación cubiertas por cada regla, etc..
+\item \textbf{Aprender a trabajar en proyectos grandes}: No tenía
+  mucha expriencia previa trabajando en bases de código con millones
+  de líneas de código. Es una experiencia muy distinta saber ubicarse
+  dentro de tales proyectos. Como la herramienta seleccionada no
+  implementabla algunas de las reglas acordadas con EMPRESAA, tuve que
+  implementarlas yo mismo.
+\item \textbf{Comunicar resultados al cliente}: A lo largo del
+  proyecto, hubieron varias reuniones con personal de EMPRESAA para
+  ponerse al día, elaborar una solución juntos, y comunicar los
+  resultados finales. Aprendí como ser conciso para poder ser
+  entendido por los miembros del equipo con menos conocimiento
+  técnico. Para la adopción de la solución, fue crucial que todos
+  entendieran su importancia, por qué es necesario, y cómo las
+  Herramientas de Desarrolladores mejoran su experiencia como
+  desarrollador.
+\end{itemize}
+
+
+\chapter{Fases de trabajo y objetivos conseguidos en c/u de ellas}
+
+A lo largo del proyecto tuve la oportunidad de participar en distintas
+fases.  Comenzando por la definición inicial de reglas de
+codificación, seguido por la adaptación de las reglas al
+\emph{workflow} de los trabajadores y su inclusión en el
+\emph{pipeline de Integración Contínua}, y finalizando en el cierre de
+la colaboración y la posterior contribución de código desarrollado a
+un proyecto open-source.
+
+
+\paragraph{}
+En concreto, las fases en las que estuve involucrado en orden
+cronológico son:
+\begin{enumerate}
+\item Definición de guía de codificación.
+\item Estudio de reglas incluidas en clang-tidy.
+\item Implantación en pipelines de Integración Contínua.
+\item Desarrollo de reglas adicionales en clang-tidy.
+\item Cierre de la colaboración con EMPRESAA.
+\item Contribución a proyecto open-source LLVM.
+\end{enumerate}
+
+\section{Definición de guía de codificación}
+\label{fase-1}
+
+Para esta fase fue crucial la interacción con el cliente. A lo largo
+de una serie de reuniones acordamos un conjunto de reglas de
+codificación realista para EMPRESAA (reglas que tengan en cuenta la
+situación de la empresa, el proyecto, y toda la gente involucrada en
+él).
+
+\paragraph{}
+En mí opinión, lo interesante de esta fase es que \emph{no solo
+requirió del conocimiento técnico} necesario para identificar reglas
+que fomenten buenas prácticas, \emph{si no que también fue necesario
+saber comunicar esos conocimientos al cliente}.
+
+\paragraph{}
+Los objetivos de esta fase son:
+\begin{itemize}
+\item \textbf{Participar en reuniones virtuales con el cliente}
+  (EMPRESAA): Esto fue algo completamente nuevo para mí que nunca me
+  había visto en la posición de tener que explicar y trabajar junto a
+  un cliente para llegar a un resultado satisfactorio para ambos.
+
+\item \textbf{Formular conjuntos de reglas considerando las
+  necesidades de la empresa}, los programadores, y los estándares de
+  codificación modernos de C++ (AUTOSAR, MISRA, C++ Core Guidelines):
+  Previamente ya tenía una noción de los estándares preexistentes de
+  programación en C++ y otros lenguajes, pero aquí me vi en la
+  posición de tener que poner en práctica todo este conocimiento.
+
+\item \textbf{Selección de herramienta/s de verificación automática de
+  reglas}. Fui responsable hacer un estudio inicial de cada una de las
+  distintas alternativas: \emph{SonarLint}, \emph{Microsoft Visual
+  Studio Core Guidelines Checker}, \emph{Clang Tidy} y \emph{Clang
+  Static Analyzer}, entre otros. Junto al cliente, medimos ventajas y
+  desventajas de cada herramienta teniendo en cuenta:
+  \begin{itemize}
+  \item \emph{Tiempo de ejecución}. Necesitamos herramientas rápidas
+    para que el programador no pierda su concentración esperando un
+    resultado.
+  \item \emph{Extensibilidad}. Capacidad para adoptar nuevas reglas.
+  \item \emph{Interactividad}. El programador debe obtener resultados
+    mientras codifica para estar en un \emph{feedback-loop} constante.
+  \end{itemize}
+  Finalmente nos decidimos por usar la suite de Clang con Clang Tidy y
+  Clang Static Analyzer, por su extensibilidad y amplia cobertura
+  (aunque no total) de las reglas acordadas.
+\end{itemize}
+
+\section{Estudio de reglas incluidas en Clang Tidy}
+\label{fase-2}
+
+Con las herramientas ya seleccionadas en la primera fase
+(especificamente Clang Tidy y Clang Static Analyzer), fue necesario
+ampliar sobre el estudio inicial.
+
+\paragraph{}
+Tuve la responsabilidad llevar a cabo un un análisis donde se
+constataron cuáles de las reglas acordadas con EMPRESAA pueden ser
+verificadas automáticamente, cuáles pueden ser verificadas por Clang
+Tidy, cuáles deberían ser codificadas por nostoros, y cuáles no pueden
+ser codificadas porque dependen de algún factor humano (por ejemplo,
+relacionadas al criterio y el ``buen gusto'').
+
+\paragraph{}
+Una vez más, la comunicación con el cliente fue esencial para
+verificar que se estaba transitando por un camino por el que todos
+estamos satisfechos.
+
+\paragraph{}
+Los objetivos logrados en esta fase son:
+\begin{itemize}
+\item \textbf{Llevar a cabo un estudio a fondo sobre las
+  verificaciones automáticas ofrecidas por Clang Tidy}: Con estos
+  datos, podemos responder las siguientes preguntas:
+  \begin{itemize}
+  \item ¿Cuántas reglas del conjunto de reglas acordadas es cubierto a
+    día de hoy por Clang Tidy?
+  \item ¿Cuántas reglas son cubiertas por el compilador de C++ (Clang o GCC)?
+  \item ¿Cuántas reglas faltantes deberán ser desarrolladas por nosotros?
+  \item ¿Cuántas reglas faltantes no pueden ser verificadas
+    automáticamente por depender de criterio humano?.
+  \end{itemize}
+
+\item \textbf{Comunicar los resultados al cliente}: De nuevo, fue
+  necesario comunicar en más de una reunión los resultados obtenidos
+  hasta el momento. De esta manera podemos saber si está de acuerdo
+  con la cobertura del conjunto de reglas que logra la herramienta y
+  los compromisos posteriores, en particular, el desarrollo de reglas
+  faltantes.
+  \begin{itemize}
+  \item Los desarrolladores están de acuerdo con la herramienta
+    seleccionada y la cobertura que ofrece.
+  \item Se reconoce la necesidad de desarrollar reglas faltantes sobre
+    la base de código de Clang Tidy.
+  \end{itemize}
+\end{itemize}
+
+
+\section{Implantación en pipelines de Integración Contínua y Workflow del programador}
+
+Como resultado de las interacciones con el cliente en la fase previa,
+se decidió proceder con la adopción de Clang Tidy y Clang Static
+Analyzer en el pipeline \emph{Integración Contínua (CI)} y en el
+\emph{Workflow} del programador.
+
+\paragraph{}
+Iniciando por el workflow, en EMPRESAA usa como IDE (Entorno de
+Desarrollo Integrado) principal \emph{Microsoft Visual Studio}. Se
+enfrentaron varios problemas para integrar Clang Tidy en este IDE.
+Los problemas se deben principalmente a la poca documentación del IDE,
+a la naturaleza propietaria que ofusca el proceso de configuración, y
+por la estructura orgánica del proyecto de EMPRESAA, que dificulta la
+automatización de algunos procesos sobre el proyecto.
+
+\paragraph{}
+Haciendo uso del controlador de versiones \emph{Git}, se optó por
+escribir un script que ejecute Clang Tidy sobre los cambios efectuados
+por el programador cada vez que el programador intente hacer un
+\emph{commit}. Algunos desarrolladores en EMPRESAA optan por usar
+Linux, por lo tanto este script debía funcionar tanto en Linux como en Windows.
+
+\paragraph{}
+Para adoptar Clang Tidy y Clang Static Analyzer al pipeline de
+Integración Contínua, descubrimos una herramienta llamada
+\emph{CodeChecker}. CodeChecker es básicamente una interfaz a las
+herramientas de Clang que ofrece estadísticas muy útiles sobre los
+resultados obtenidos, las cuales son visibles mediante interfaces Web
+interactivas generadas automáticamente. Esta herramienta es muy fácil
+de configurar para su adición a la plataforma de integración contínua
+de la empresa.
+
+\paragraph{}
+Los objetivos de esta fase entonces son:
+\begin{itemize}
+\item \textbf{Integrar de Clang Tidy en Microsoft Visual Studio}:
+  Solución de problemas de MSVC y el proyecto en sí para la adopción
+  de Clang Tidy.
+\item \textbf{Desarrollar scripts pre-commit para Git en Linux y
+  Windows}: Script que ejecuta Clang Tidy antes de cada commit a
+  manera de corroborar que cada pieza de código nuevo está adecuado al
+  conjunto de reglas acordados con EMPRESAA.
+\item \textbf{Integrar Clang Tidy y Clang Static Analyzer en el
+  pipeline de CI haciendo uso de CodeChecker}: Configuración de
+  CodeChecker para integrar en Jenkins.  CodeChecker es una
+  herramienta que facilita estadísticas obtenidas de la ejecución de
+  Clang Tidy y Clang Static Analyzer.
+\end{itemize}
+
+\section{Desarrollo de reglas adicionales en Clang Tidy}
+
+En la segunda fase (``\nameref{fase-2}'') confirmamos que varias
+reglas no eran verificables automáticamente por Clang Tidy. Algunas de
+estas reglas no son verificables por ninguna herramienta al depender
+de ciertos aspectos del criterio humano (mayormente problemas de
+diseño), pero otras sí que son verificables. El problema con estas
+últimas es que el código fuente de Clang Tidy aún no cuenta con
+código que implemente tal verificación.
+
+\paragraph{}
+Objetivos de esta fase:
+\begin{itemize}
+\item \textbf{Extender el código fuente de Clang Tidy para cubrir las
+  reglas faltantes verificables automáticamente}: Para lo que fue
+  necesario:
+  \begin{itemize}
+  \item Configurar las opciones de compilación del proyecto. Clang
+    Tidy es parte de un proyecto llamado \emph{LLVM}. LLVM cuenta con
+    millones y millones de líneas de código. Si bien no todas las
+    líneas de código son necesarias para producir un binario útil para
+    nuestros fines, la compilación sigue siendo un proceso que
+    requiere de mucho cómputo. Para poder agilizar el flujo de trabajo
+    en la implementación, hice uso de un servidor del cual disponemos
+    en ARCOS, el cual tiene prestaciones mucho más altas que las que
+    una notebook o un computador de escritorio podrían tener.
+  \item Familiarizarse con la base de código de Clang Tidy (muy
+    grande). Reitero, LLVM tiene millones de líneas de código. Si bien
+    no se trabaja en simultáneo sobre todas las líneas de código, la
+    familiarización con la manera en que este proyecto se subdivide y
+    las interfaces necesarias para poder trabajar en su extensión, no
+    es un proceso trivial.
+  \item Escribir el código necesario para cubrir las reglas
+    faltantes. Una vez ya familiarizado con las partes de LLVM
+    relevantes para la implementación de las reglas faltantes, no fue
+    muy complicado escribir el código necesario.
+  \item Corroborar que el código escrito conforma el las guías de
+    estilo y calidad de LLVM. LLVM dispone varias guías para producir
+    código ``aceptable'' y ``uniforme'' con el resto de la base de
+    código.
+  \end{itemize}
+\item \textbf{Facilitar a EMPRESAA los parches realizados sobre Clang
+  Tidy}: Con EMPRESAA acordamos la versión de Clang Tidy a usar desde
+  un principio, por lo que o solo tuve que realizar un script que
+  aplicara de manera automática los parches realizados sobre el código
+  de Clang Tidy de esa versión en particular.
+\end{itemize}
+
+\section{Cierre de la colaboración con EMPRESAA}
+
+En esta fase se comunicaron los resultados de toda la colaboración a
+una porción más grande del equipo de EMPRESAA. Me ví en la posición de
+explicar todas las decisiones tomadas y acciones realizadas de una
+manera concisa y clara.
+
+\paragraph{}
+Objetivos de esta fase:
+\begin{itemize}
+\item \textbf{Resumir todas las decisiones y acciones realizadas a lo
+  largo de la colaboración al equipo de EMPRESAA}: Hacer un repaso de
+  todas las fases anteriores, desde la selección de herramienta hasta
+  el desarrollo del código para las reglas faltantes en Clang Tidy.
+\item \textbf{Trabajar en conjunto con empleados de EMPRESAA}: Para
+  desarrollar una explicación clara y concisa para el resto de sus
+  compañeros de trabajo.
+\item \textbf{Preparar una presentación a modo de resumir todo lo
+  realizado en la colaboración}: En donde tuve que explicar y resolver
+  dudas del equipo de EMPRESAA previo al cierre de la colaboración.
+\end{itemize}
+
+\section{Contribución a proyecto open-source LLVM}
+
+Una vez terminada la colaboración con EMPRESAA, mí tutor fue capaz de
+conseguir permiso para poder contribuir las reglas escritas para
+EMPRESAA a la base de código de Clang Tidy. Esto beneficia a ambos
+bandos; ellos consiguen tener mantenimiento por la comunidad código
+abierto de LLVM, y nosotros conseguimos mayor exposición.
+
+\paragraph{}
+Objetivos de esta fase:
+\begin{itemize}
+\item \textbf{Remover referencias a la empresa en el código previo a
+  su publicación}: A modo de proteger la privacidad de la empresa.
+\item \textbf{Buscar un módulo de Clang Tidy apto para añadir las
+  reglas escritas}: Clang Tidy se compone de varios módulos según la
+  categoría de problemas que soluciona cada regla (y algunos otros
+  criterios varios). Es necesario entonces ubicar las reglas a
+  ingresar en uno de estos módulos.
+\item \textbf{Contribuir el código y pasar el proceso de revisión de
+  LLVM}: El código no puede añadirse a LLVM y ya. LLVM, como proyecto
+  bien establecido, sigue una metodología de cambios. Se tienen en
+  cuenta cuestiones como motivación del cambio, conformación al estilo
+  de código de LLVM y calidad del código en general. Solo una vez
+  pasado este proceso, la contribución es adoptada por la base de
+  código de LLVM.
+\end{itemize}
+
+\chapter{Comentarios sobre las fases realizadas y su relación con el
+  grado cursado}
+
+A lo largo del grado, obtuve conocimiento que me fue de gran ayuda
+para la realización de la práctica. Siento que las asignaturas que
+fueron de mayor ayuda para el problema encarado pertenecen tanto a
+ámbitos técnicos como a ámbitos bastante relacionados con habilidades
+blandas.
+
+\section{Conocimiento Técnico}
+
+\paragraph{}
+\textbf{Procesadores del Lenguaje}
+
+Si de código se trata, mí mayor contribución a lo largo de la práctica
+se dió en la infraestructura de compiladores de LLVM. En LLVM tuve que
+lidiar con análisis sintáctico y semántico, estar familiarizado con
+\emph{Lexers}, \emph{Parse Trees} y \emph{Abstract Syntax
+Trees}. Estos temas son explorados en detalle en la asignatura
+Procesadores del Lenguaje.
+
+\paragraph{}
+\textbf{Arquitectura de Computadores}
+
+Todo el proyecto fue desarrollado en C++. Arquitectura de Computadores
+es la primera asignatura (y posiblemente única) en el grado en donde
+se tiene contacto con este lenguaje de programación.
+
+\paragraph{}
+C++ es un lenguaje complejo, no creo que hubiera sido posible haber
+realizado las prácticas con la fluidez con la que se hizo si no
+hubiera tenido contacto e interés previo por el lenguaje de
+programación en cuestión.
+
+\paragraph{}
+\textbf{Estructuras de Datos y Algoritmos}
+
+Como bloque principal de la programación, conocer estructuras de datos
+y algoritmos fueron esenciales para comprender el funcionamiento de la
+base de código de Clang Tidy.
+
+\paragraph{}
+\textbf{Estadística}
+
+Muchos de los datos que tuve que comunicar al equipo de EMPRESAA se
+dieron en forma de estadísticos, distribuciones, etcétera. Sin previo
+conocimiento del área de estadística, no podría haber comunicado a los
+miembros del equipo los resultados obtenidos al evaluar distintas
+herramientas que fueron consideradas para la verificación automática
+de código.
+
+\section{Ingeniería del Software y Habilidades blandas}
+
+\paragraph{}
+\textbf{Técnicas de Expresión Oral y Escrita}
+
+Todo progreso necesitó de una reunión con el resto del equipo. Hablar
+de manera clara, precisa y concisa fue crucial para poder comunicar
+con el equipo sin causar desinterés en el proceso. Las técnicas
+aprendidas en esta asignatura me fueron muy útiles para poder
+identificar tiempos y formas en las que distintos temas se deben
+comunicar, según la generalidad o especificidad de estos.
+
+\paragraph{}
+\textbf{Interfaces de Usuario}
+
+El enfoque de las herramientas estudiadas y reglas desarrolladas se
+basan en el área de \emph{Herramientas del Desarrollador}. Estas
+herramientas buscan mejorar la \emph{Experiencia de Desarrollo}, que
+no es nada más que la experiencia de usuario. Las guías e indicaciones
+aprendidas en la asignatura de Interfaces de Usuario fueron necesarias
+para poder identificar las necesidades de los desarrolladores.
+
+\paragraph{}
+\textbf{Ingeniería del Software}
+
+La identificación de requisitos, necesidades de la empresa, y
+comunicación con el usuario son el enfoque principal de esta
+asignatura y fueron de vital importancia en todas las fases de estas
+prácticas.
+
+\chapter{Consideraciones en beneficio de la realización de PAE}
+
+\section{Experiencia personal}
+
+Me siento conforme con el desarrollo de la práctica. Creo que aprendí
+bastante sobre la dinámica de un equipo de trabajo y la forma de
+trabajar entre varios equipos de trabajo. Me ví en la posición de
+explicar resultados a personal sin mucho conocimiento técnico pero,
+aún así, esencial para la empresa. Estas situaciones me ayudaron mucho
+a mejorar mi perfil en cuanto a ``habilidades blandas''.
+
+\paragraph{}
+En cuanto a la parte más técnica del trabajo, me apasionan los
+compiladores y disfruté bastante el desafío de usar LLVM para el
+desarrollo de reglas que hacen uso de la infraestructura del
+compilador.
+
+\paragraph{}
+En general, creo que esta experiencia ha sido muy gratificante. He
+aprendido bastante sobre software y la gente que lo produce.
+
+\section{Experiencia en ARCOS}
+
+Mí tutor José Daniel junto a todo el grupo de ARCOS me brindaron un
+entorno laboral más que satisfactorio. Fui capaz de ser parte de un
+entorno agradable de trabajo, con gente competente que trata con temas
+técnicamente interesantes y desafiantes.
+
+\chapter{Conclusiones}
+
+Creo que he desarrollado sustancialmente mí conocimiento a lo largo de
+estas prácticas. No solo en cuanto a los conocimientos técnicos
+propios de la ingeniería informática, si no también sobre las
+habilidades blandas, el poder comunicar ideas y resultados. Creo que
+estas prácticas me ayudaron a formarme como un aspirante a ingeniero
+más completo del que era previo a su realización.
+
+\paragraph{}
+La colaboración con EMPRESAA me enseñó bastante sobre la forma de
+operar de la industria IT, sus intereses y prioridades. Así como mí
+estadía en ARCOS me mostró la forma de operar de un grupo de
+investigación en el área de la ingeniería informática.
+
+\paragraph{}
+En cierto nivel, pude ver la manera en que las universidades
+interactúan con la industria, y cómo ambas partes se benefician de
+este intercambio económico y de conocimiento.
+
+\paragraph{}
+Agradezco a José Daniel y a todo el grupo de ARCOS por el excelente
+entorno laboral y la oportunidad única que me ofrecieron.
+
 
 \end{document}
